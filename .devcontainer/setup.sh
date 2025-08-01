@@ -17,6 +17,14 @@ mkdir -p ~/.local/bin
 mv sui ~/.local/bin/
 rm $SUI_TAR
 
+# Asegura que ~/.local/bin esté en el PATH para futuras sesiones
+if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+fi
+if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.profile; then
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
+fi
+
 # Asegura que ~/.local/bin esté en el PATH para la sesión actual
 export PATH="$HOME/.local/bin:$PATH"
 
