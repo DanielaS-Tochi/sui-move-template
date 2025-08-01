@@ -30,3 +30,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Verifica la instalación
 sui --version
+
+# Forzar que el PATH esté disponible en shells de login y no-login
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> /etc/profile.d/sui-path.sh
+chmod +x /etc/profile.d/sui-path.sh
