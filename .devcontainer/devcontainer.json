@@ -7,7 +7,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.vscode-typescript-tslint-plugin",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "move.move-analyzer"
