@@ -18,7 +18,7 @@
       }
     }
   },
-  "postCreateCommand": "bash -c 'curl -fsSL https://get.sui.io | bash && source $HOME/.sui/env'",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "features": {
     "ghcr.io/devcontainers/features/rust:1": {}
   }
