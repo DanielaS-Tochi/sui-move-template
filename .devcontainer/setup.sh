@@ -1,42 +1,35 @@
 #!/usr/bin/env bash
 set -e
 
-# Versión de SUI a instalar
-SUI_VERSION="mainnet-v1.22.0"
+# Use latest stable version
+SUI_VERSION="mainnet-v1.37.0"
 SUI_TAR="sui-${SUI_VERSION}-ubuntu-x86_64.tar.gz"
 SUI_URL="https://github.com/MystenLabs/sui/releases/download/${SUI_VERSION}/${SUI_TAR}"
 
-# Descarga el binario
+# Download SUI binary
+echo "Downloading SUI ${SUI_VERSION}..."
 wget -q $SUI_URL
+wget -q "${SUI_URL}.sha256"
 
-# Verifica la descarga
-if [ ! -f "$SUI_TAR" ]; then
-  echo "Error: No se pudo descargar $SUI_TAR"
-  exit 1
+# Verify checksum
+echo "Verifying checksum..."
+sha256sum -c "${SUI_TAR}.sha256"
+
+# Extract and install
+echo "Installing SUI..."
+tar xzf $SUI_TAR
+sudo mv sui /usr/local/bin/
+rm $SUI_TAR
+
+# Verify installation
+if ! sui --version; then
+    echo "SUI installation failed"
+    exit 1
 fi
 
-# Extrae el tarball
-tar -xzf $SUI_TAR
+# Install Move analyzer and tools
+echo "Installing Move tools..."
+rustup component add rust-analyzer
+cargo install --git https://github.com/move-language/move move-analyzer
 
-# Crea ~/.local/bin si no existe
-mkdir -p ~/.local/bin
-
-# Busca y mueve el binario 'sui' a ~/.local/bin
-find . -type f -name sui -exec mv {} ~/.local/bin/ \;
-
-# Limpia archivos
-rm -f $SUI_TAR
-
-# Asegura que ~/.local/bin esté en el PATH para futuras sesiones
-if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
-  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-fi
-if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.profile; then
-  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
-fi
-
-# Asegura que ~/.local/bin esté en el PATH para la sesión actual
-export PATH="$HOME/.local/bin:$PATH"
-
-# Verifica la instalación
-sui --version
+echo "Setup completed successfully!"

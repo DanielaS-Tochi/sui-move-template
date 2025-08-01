@@ -1,25 +1,30 @@
 {
-  "name": "SUI Move Development",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "."
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "move.move-analyzer",
-        "GitHub.copilot"
-      ],
-      "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash",
-        "editor.formatOnSave": true
-      }
-    }
-  },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
-  "features": {
-    "ghcr.io/devcontainers/features/rust:1": {}
-  }
+    "name": "SUI Move Development",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "move.move-analyzer",
+                "GitHub.copilot",
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "serayuzgur.crates"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.rulers": [100],
+                "files.eol": "\n",
+                "move.analyzer.path": "/usr/local/bin/move-analyzer"
+            }
+        }
+    },
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/rust:1": {
+            "version": "latest"
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/setup.sh"
 }
