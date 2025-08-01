@@ -38,8 +38,11 @@ The template aims to:
 
 ### Step 3: Verify the Environment
 Once the Codespace is ready:
-1. Open a terminal in the Codespace (Ctrl+` or Terminal > New Terminal in VS Code).
-2. Run the following command to verify the SUI CLI installation:
+1. Open a terminal in the Codespace (Ctrl+` or **Terminal** > **New Terminal** in VS Code).
+2. Open the sample files for reference:
+   - In the VS Code Explorer, navigate to `sui-move-example/sources/example.move` and double-click to open it.
+   - Open `README.md` in the root directory for further instructions.
+3. Run the following command to verify the SUI CLI installation:
    ```bash
    sui --version
 
@@ -144,8 +147,10 @@ Badges
 <img src="https://img.shields.io/badge/SUI-1.37.0-blue" alt="SUI Version">
 <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 <img src="https://img.shields.io/badge/Codespaces-Ready-brightgreen" alt="Codespaces Ready">
+
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 Acknowledgments
 
 SUI Documentation for comprehensive guides.
@@ -158,6 +163,5 @@ If you encounter issues or have suggestions:
 Open an issue in the GitHub repository.
 Check the SUI Community for help.
 Contact the maintainers via GitHub.
-
 
 
