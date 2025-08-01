@@ -1,0 +1,26 @@
+{
+  "name": "SUI Move Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "move.move-analyzer"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "postCreateCommand": "bash -c 'curl -fsSL https://get.sui.io | bash && source $HOME/.sui/env'",
+  "openFiles": ["sui-move-example/sources/example.move", "README.md"],
+  "features": {
+    "ghcr.io/devcontainers/features/rust:1": {}
+  }
+}
