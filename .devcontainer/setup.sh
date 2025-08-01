@@ -10,9 +10,15 @@ SUI_URL="https://github.com/MystenLabs/sui/releases/download/${SUI_VERSION}/${SU
 wget -q $SUI_URL
 tar -xzf $SUI_TAR
 
-# Mueve el binario a /usr/local/bin (requiere permisos de superusuario)
-sudo mv sui /usr/local/bin/
+# Crea ~/.local/bin si no existe
+mkdir -p ~/.local/bin
+
+# Mueve el binario a ~/.local/bin
+mv sui ~/.local/bin/
 rm $SUI_TAR
+
+# Asegura que ~/.local/bin esté en el PATH para la sesión actual
+export PATH="$HOME/.local/bin:$PATH"
 
 # Verifica la instalación
 sui --version

@@ -9,7 +9,8 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "move.move-analyzer"
+        "move.move-analyzer",
+        "GitHub.copilot"
       ],
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash",
