@@ -1,0 +1,25 @@
+{
+    "name": "SUI Move Development",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "context": "."
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-vscode.vscode-typescript-tslint-plugin",
+          "dbaeumer.vscode-eslint",
+          "esbenp.prettier-vscode",
+          "move.move-analyzer"
+        ],
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "/bin/bash",
+          "editor.formatOnSave": true
+        }
+      }
+    },
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "features": {
+      "ghcr.io/devcontainers/features/rust:1": {}
+    }
+  }
